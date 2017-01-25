@@ -69,7 +69,7 @@ namespace HockeyEditor
         {
             int bytesRead = 0;
             byte[] buffer = new byte[4];
-            ReadProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesRead);
 
             return BitConverter.ToInt32(buffer, 0);
         }
@@ -84,7 +84,7 @@ namespace HockeyEditor
             int bytesWritten = 0;
             byte[] buffer = BitConverter.GetBytes(value);
 
-            WriteProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesWritten);
+            WriteProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesWritten);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace HockeyEditor
         {
             int bytesRead = 0;
             byte[] buffer = new byte[4];
-            ReadProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesRead);
 
             return BitConverter.ToSingle(buffer, 0);
         }
@@ -110,7 +110,7 @@ namespace HockeyEditor
             int bytesWritten = 0;
             byte[] buffer = BitConverter.GetBytes(value);
 
-            WriteProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesWritten);
+            WriteProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesWritten);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace HockeyEditor
         {
             int bytesRead = 0;
             byte[] buffer = new byte[length];
-            ReadProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesRead);
 
             // Read up until a \0 is encounted
               return Encoding.ASCII.GetString(buffer).Split('\0')[0];
@@ -133,7 +133,7 @@ namespace HockeyEditor
             int bytesWritten = 0;
             byte[] buffer = Encoding.ASCII.GetBytes(str + "\0");
 
-            WriteProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesWritten);
+            WriteProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesWritten);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace HockeyEditor
             float[] posArray = new float[] { v.X, v.Y, v.Z };
             Buffer.BlockCopy(posArray, 0, buffer, 0, buffer.Length);
 
-            WriteProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesWritten);
+            WriteProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesWritten);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace HockeyEditor
             int bytesRead = 0;
             byte[] buffer = new byte[12];
 
-            ReadProcessMemory((int)hockeyProcessHandle, address, buffer, buffer.Length, ref bytesRead);
+            ReadProcessMemory((int)hockeyProcessHandle, address + baseAddress, buffer, buffer.Length, ref bytesRead);
 
             float[] posArray = new float[3];
             Buffer.BlockCopy(buffer, 0, posArray, 0, buffer.Length);
