@@ -5,18 +5,20 @@
     /// </summary>
     public static class GameInfo
     {
-        const int TIME_ADDRESS = 0x07D349A8;
+        const int TIME_ADDRESS = 0x1D9530; //plus base address
         const int TIME_OFFSET = 0x0;
         const int PERIOD_OFFSET = 0x8;
         const int INTERMISSION_TIME_OFFSET = 0xC;
 
-        const int STOP_TIME_ADDRESS = 0x07D33DA0;
+        const int STOP_TIME_ADDRESS = 0x07D33DA0; //Still haven't found this one.
+        
+        const int FACEOFF_TIME_ADDRESS = 0x1D956C; //plus base address
 
-        const int SCOREBOARD_ADDRESS = 0x07D33D98;
+        const int SCOREBOARD_ADDRESS = 0x1D8920; //plus base address
         const int RED_SCORE_OFFSET = 0x0;
         const int BLUE_SCORE_OFFSET = 0x4;
 
-        const int GAME_OVER = 0x07D349AC;
+        const int GAME_OVER = 0x1D9534;
 
 
         /// <summary>
@@ -71,6 +73,15 @@
         {
             get { return MemoryEditor.ReadInt(STOP_TIME_ADDRESS); }
             set { MemoryEditor.WriteInt(value, STOP_TIME_ADDRESS); }
+        }
+        
+        /// <summary>
+        /// The amount of time in hundredths of a second before the puck drops on faceoffs.
+        /// </summary>
+        public static int FaceoffTime
+        {
+            get { return MemoryEditor.ReadInt(FACEOFF_TIME_ADDRESS); }
+            set { MemoryEditor.WriteInt(value, FACEOFF_TIME_ADDRESS); }
         }
 
         /// <summary>
