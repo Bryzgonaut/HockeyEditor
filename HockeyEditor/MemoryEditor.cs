@@ -30,6 +30,7 @@ namespace HockeyEditor
             try
             {
                 hockeyProcess = Process.GetProcessesByName("hockey")[0];
+                int baseAddress = hockeyProcess.MainModule.BaseAddress.ToInt32(); 
             }
             catch (System.IndexOutOfRangeException e)  // CS0168
             {
