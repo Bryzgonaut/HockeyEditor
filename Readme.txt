@@ -1,6 +1,6 @@
-Hockey Editor
+Hockey 61e Editor
 
-A library for editing HockeyQuestionMark Memory.
+HockeyEditor for version 61e.
 
 http://www.hockeyquestionmark.com/
 https://www.reddit.com/r/hockeyquestionmark/
@@ -11,6 +11,4 @@ Add to your project
 
 Always call MemoryEditor.Init() before using any library calls
 
-Contact: 
-samhaliburton@gmail.com
 
