@@ -19,6 +19,7 @@ namespace HockeyEditor
         private const int PROCESS_ALL_ACCESS = 0x1F0FFF;
         private static Process hockeyProcess = null;
         private static IntPtr hockeyProcessHandle;
+        private static int baseAddress;
 
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace HockeyEditor
             try
             {
                 hockeyProcess = Process.GetProcessesByName("hockey")[0];
-                int baseAddress = hockeyProcess.MainModule.BaseAddress.ToInt32(); 
+                baseAddress = hockeyProcess.MainModule.BaseAddress.ToInt32(); 
             }
             catch (System.IndexOutOfRangeException e)  // CS0168
             {
@@ -49,6 +50,7 @@ namespace HockeyEditor
             try
             {
                 hockeyProcess = Process.GetProcessesByName("hockey")[0];
+                baseAddress = hockeyProcess.MainModule.BaseAddress.ToInt32(); 
             }
             catch (System.IndexOutOfRangeException e)  // CS0168
             {
