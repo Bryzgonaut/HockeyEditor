@@ -2,21 +2,26 @@
 {
     public class Player
     {
-        const int PLAYER_LIST_ADDRESS = 0x04A5B860;
+        const int PLAYER_LIST_ADDRESS = 0x3FCE000; //updated
         const int PLAYER_STRUCT_SIZE = 0x98;
 
-        const int IN_SERVER_OFFSET = 0x0;
-        const int ID_OFFSET = 0x4;
-        const int TEAM_OFFSET = 0x8;
-        const int ROLE_OFFSET = 0xC;
-        const int LOCKOUT_TIME_OFFSET = 0x10;
-        const int PLAYER_NAME_OFFSET = 0x14;
+        const int IN_SERVER_OFFSET = 0x0; //updated
+        const int ID_OFFSET = 0x8; //updated
+        const int TEAM_OFFSET = 0xC;
+        
+        //ROLE_OFFSET Removed (no set positions anymore)
+        //LOCKOUT_TIME_OFFSET Removed (not used in 61)
+        
+        const int PLAYER_NAME_OFFSET = 0x10;
         const int STICK_ANGLE_OFFSET = 0x54;
         const int TURNING_OFFSET = 0x58;
         const int FORWARD_BACK_OFFSET = 0x60;
         const int STICK_X_ROTATION_OFFSET = 0x64;
         const int STICK_Y_ROTATION_OFFSET = 0x68;
-        const int LEG_STATE_OFFSET = 0x74;
+        
+        const int INPUT_OFFSET = 0x74;  //Renamed from LEG_STATE
+        
+        
         const int HEAD_X_ROTATION_OFFSET = 0x78;
         const int HEAD_Y_ROTATION_OFFSET = 0x7C;
         const int GOALS_OFFSET = 0x88;
@@ -64,15 +69,6 @@
         {
             get { return (HQMTeam)MemoryEditor.ReadInt(PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + TEAM_OFFSET); }
             set { MemoryEditor.WriteInt((int)value, PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + TEAM_OFFSET); }
-        }
-
-        /// <summary>
-        /// The role that the player is occupying
-        /// </summary>
-        public HQMRole Role
-        {
-            get { return (HQMRole)MemoryEditor.ReadInt(PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + ROLE_OFFSET); }
-            set { MemoryEditor.WriteInt((int)value, PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + ROLE_OFFSET); }
         }
 
         /// <summary>
@@ -137,9 +133,10 @@
         }
 
         /// <summary>
-        /// 1 = Jumping, 2 = Crouched, 16 = Stopped with Shift
+        /// Used for Leg State and a few other player inputs.
+        /// 1 = Jumping (Space) 2 = Crouched (Ctrl or Shift) 4 = Join Red (1) 8 = Join Blue (2) 16 = Unused? 32 = Spectate (0) 64 = Retrieve Puck in Practice Mode (R)
         /// </summary>
-        public int LegState
+        public int InputState
         {
             get { return MemoryEditor.ReadInt(PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + LEG_STATE_OFFSET); }
             set { MemoryEditor.WriteInt(value, PLAYER_LIST_ADDRESS + m_Slot * PLAYER_STRUCT_SIZE + LEG_STATE_OFFSET); }
@@ -212,15 +209,6 @@
         }
     }
 
-    public enum HQMRole
-    {
-        C = 0,
-        LD = 1,
-        RD = 2,
-        LW = 3,
-        RW = 4,
-        G = 5
-    }
 
     public enum HQMTeam
     {
