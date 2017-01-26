@@ -5,7 +5,7 @@
     /// </summary>
     public static class Puck
     {
-        const int PUCK_TRANSFORM_ADDRESS = 0x07D1C280;
+        const int PUCK_TRANSFORM_ADDRESS = 0x1BA7A8;
         const int PUCK_POSITION_OFFSET = 0x10;
         const int PUCK_VELOCITY_OFFSET = 0x4C;
         const int PUCK_ROTATIONAL_VELOCITY_OFFSET = 0x64;
