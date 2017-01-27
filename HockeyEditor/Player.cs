@@ -5,27 +5,27 @@
         const int PLAYER_LIST_ADDRESS = 0x2EDF000; //updated
         const int PLAYER_STRUCT_SIZE = 0x98;
 
-        const int IN_SERVER_OFFSET = 0x0; //updated
-        const int ID_OFFSET = 0x8; //updated
-        const int TEAM_OFFSET = 0xC;
+        const int IN_SERVER_OFFSET = 0x0; //working
+        const int ID_OFFSET = 0x8; //working
+        const int TEAM_OFFSET = 0xC; //working
         
         //ROLE_OFFSET Removed (no set positions anymore)
         //LOCKOUT_TIME_OFFSET Removed (not used in 61)
         
-        const int PLAYER_NAME_OFFSET = 0x10;
-        const int STICK_ANGLE_OFFSET = 0x54;
-        const int TURNING_OFFSET = 0x58;
-        const int FORWARD_BACK_OFFSET = 0x60;
-        const int STICK_X_ROTATION_OFFSET = 0x64;
-        const int STICK_Y_ROTATION_OFFSET = 0x68;
+        const int PLAYER_NAME_OFFSET = 0x10; //working
+        const int STICK_ANGLE_OFFSET = 0x50; //working
+        const int TURNING_OFFSET = 0x54; //working
+        const int FORWARD_BACK_OFFSET = 0x5C; //working
+        const int STICK_X_ROTATION_OFFSET = 0x60; //working
+        const int STICK_Y_ROTATION_OFFSET = 0x64; //working
         
-        const int INPUT_OFFSET = 0x74;  //Renamed from LEG_STATE
+        const int INPUT_OFFSET = 0x70;  //Renamed from LEG_STATE, working
         
         
-        const int HEAD_X_ROTATION_OFFSET = 0x78;
-        const int HEAD_Y_ROTATION_OFFSET = 0x7C;
-        const int GOALS_OFFSET = 0x88;
-        const int ASSISTS_OFFSET = 0x8C;
+        const int HEAD_X_ROTATION_OFFSET = 0x74;
+        const int HEAD_Y_ROTATION_OFFSET = 0x78;
+        const int GOALS_OFFSET = 0x84; //working
+        const int ASSISTS_OFFSET = 0x88; //working
 
         const int PLAYER_TRANSFORM_LIST_ADDRESS = 0x07D1C280;
         const int PLAYER_TRANSFORM_SIZE = 0xBD8;
