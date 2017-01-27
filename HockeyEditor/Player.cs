@@ -2,7 +2,7 @@
 {
     public class Player
     {
-        const int PLAYER_LIST_ADDRESS = 0x3FCE000; //updated
+        const int PLAYER_LIST_ADDRESS = 0x2EDF000; //updated
         const int PLAYER_STRUCT_SIZE = 0x98;
 
         const int IN_SERVER_OFFSET = 0x0; //updated
