@@ -4,7 +4,7 @@ namespace HockeyEditor
 {
     public class PlayerManager
     {
-        const int LOCAL_PLAYER_SLOT_ADDRESS = 0x080B62C4;
+        const int LOCAL_PLAYER_SLOT_ADDRESS = 0x2F60E44;
         const int NUM_PLAYERS = 30;
 
         /// <summary>
